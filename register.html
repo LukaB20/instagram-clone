@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./style/loginRegister.css">
+    <title>Instagram | Register</title>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Instagram</h1>
+
+        <p class="error-text">Invalid email or password</p>
+        <p class="success-text">You have successfully created an account. <a>Login</a></p>
+
+        <form action="#">
+            <div>
+                <label for="firstName">First name</label>
+                <input type="text" name="efirstName" id="firstName">
+            </div>
+            <div>
+                <label for="lastName">Last name</label>
+                <input type="text" name="lastName" id="lastName">
+            </div>
+            <div>
+                <label for="email">Email</label>
+                <input type="text" name="email" id="email">
+            </div>
+            <div>
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password">
+            </div>
+            <div>
+                <label for="confirmPassword">Confirm password</label>
+                <input type="text" name="confirmPassword" id="confirmPassword">
+            </div>
+            <div>
+                <label for="image">Choose profile picture</label>
+                <input type="file" name="image" id="image">
+            </div>
+            <input type="submit" value="Sign Up">
+        </form>
+        <p>Already have an account? <a href="#">Login here</a></p>
+    </div>
+    
+</body>
+</html>
