@@ -11,7 +11,7 @@
             if($_POST['password'] != $_POST['confirmPassword']){
                 $confirmedPasswordError = "Passwords do not match.";
             }
-            if($_FILES['image']['size'] > 1000000){
+            if($_FILES['image']['size'] > 10000000){
                 $imageError = "Image size is large.";
             }else{
     
@@ -22,14 +22,23 @@
                 }
             }
             if(empty($emailError) && empty($confirmedPasswordError) && empty($imageError)){
+    
+                @require("./models/User.php");
+
                 $success = "block";
                 $userDirName = $_POST["firstName"] . time();
                 mkdir("uploads/$userDirName");
-                $fileName = basename($_FILES['image']['name']);
-                if(!move_uploaded_file($_FILES['image']["tmp_name"], "uploads/$userDirName/$fileName")){
+                $targetFile = "uploads/" . $userDirName . "/" . $_FILES['image']['name'];
+                if(!move_uploaded_file($_FILES['image']["tmp_name"], $targetFile)){
                     $imageError = "Image not uploaded.";
                     exit();
                 }
+
+                $fileName = $_FILES['image']['name'];
+
+                $imagePath = "uploads/$userDirName/" . $fileName;
+
+                User::insertUser($_POST['firstName'], $_POST['lastName'], $_POST['email'], $_POST['password'], "Offline", $imagePath);
             }
         }
     
