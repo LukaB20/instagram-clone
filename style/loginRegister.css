@@ -97,3 +97,9 @@ a:hover{
     color: green;
     cursor: pointer;
 }
+
+.invalid-field{
+    color: red;
+    margin-top: 0.2rem;
+    font-style: italic;
+}
