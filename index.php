@@ -1,3 +1,29 @@
+<?php
+
+session_start();
+
+$id;
+$displayErrorMessage = "";
+
+if($_SERVER['REQUEST_METHOD'] == "POST"){
+
+    @require('models/User.php');
+
+    $id = User::authentificateUser($_POST['email'], $_POST['password']);
+    
+    if($id == null){
+        $displayErrorMessage = "block";
+    }else{
+
+        $_SESSION['user_id'] = $id;
+        header("Location: profile.php");
+
+    }
+
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,9 +39,9 @@
     <div class="container">
         <h1>Instagram</h1>
 
-        <p class="error-text">Invalid email or password</p>
+        <p class="error-text" style="display: <?php echo $displayErrorMessage; ?>;">Invalid email or password</p>
 
-        <form action="#">
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);  ?>" method="POST">
             <div>
                 <label for="email">Email</label>
                 <input type="text" name="email" id="email">
