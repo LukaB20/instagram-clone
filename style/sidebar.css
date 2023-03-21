@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'open-sans', sans-serif;
+}
+
+:root {
+    --light-body: #f5f5f5;
+    --dark: rgb(45, 45, 45);
+}
+
+body{
+    background-color: var(--light-body);
+}
+
+.side-bar{
+    height: 100vh;
+    width: 250px;
+    background-color: white;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    gap: 3rem;
+    padding-top: 1rem;
+}
+
+.side-bar h2 a{
+    text-decoration: none;
+    color: var(--dark);
+    font-family: 'Lobster';
+    font-size: 2rem;
+    padding: 0.5rem;
+}
+
+.link-group{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.link-group a{
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: var(--dark);
+    padding: 0.5rem;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.link-group a:hover{
+    background-color: var(--light-body);
+}
+
+.link-group a i{
+    margin-right: 0.5rem;
+}
+
+.side-bar form{
+    padding: 0.5rem;
+}
+
+.side-bar form input{
+    background-color: white;
+    border: none;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+}
