@@ -7,6 +7,10 @@ if(!isset($_SESSION['user_id'])){
     exit();
 }
 
+@include("./models/User.php");
+
+$user = User::findUser($_SESSION['user_id']);
+
 ?>
 
 <!DOCTYPE html>
@@ -28,10 +32,10 @@ if(!isset($_SESSION['user_id'])){
             <h2><a href="home.html">Instagram</a></h2>
     
             <div class="link-group">
-                <a href="home.html"><i class="fa-solid fa-house"></i> Home</a>
+                <a href="home.php"><i class="fa-solid fa-house"></i> Home</a>
                 <a href="home.html"><i class="fa-solid fa-message"></i> Messages</a>
                 <a href="home.html"><i class="fa-solid fa-square-plus"></i> Add new post</a>
-                <a href="profile.html"><i class="fa-solid fa-user"></i> Profile</a>
+                <a href="profile.php"><i class="fa-solid fa-user"></i> Profile</a>
             </div>
     
             <form action="./php/logout.php" method="POST">
@@ -49,7 +53,7 @@ if(!isset($_SESSION['user_id'])){
 
                 <div>
                     <div class="user-data">
-                        <p class="name">Luka Banovic</p>
+                        <p class="name"><?php echo $user['firstname'] . " " . $user['lastname'] ?></p>
                         <a href="edit.html">Edit profile</a>
                     </div>
     
@@ -63,9 +67,6 @@ if(!isset($_SESSION['user_id'])){
             </div>
 
             <div class="user-posts">
-                <div class="post">
-
-                </div>
             </div>
 
         </div>

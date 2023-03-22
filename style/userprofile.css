@@ -18,13 +18,13 @@
 
 .user-profile{
     background-color: white;
-    height: 400px;
     width: 50%;
     margin-top: 1rem;
     padding: 2rem;
     border-radius: 5px;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     overflow-y: auto;
+    max-height: 90vh;
 }
 
 .user-info{
@@ -74,4 +74,22 @@
 
 .user-stats span{
     font-weight: bold;
+}
+
+.user-posts{
+    display: flex;
+    align-items: center;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 0.5rem;
+}
+
+.post{
+    width: 400px;
+    height: 400px;
+    background-image: url(../uploads/Marko1678997556/46.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
 }
