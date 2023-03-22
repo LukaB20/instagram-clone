@@ -1,3 +1,14 @@
+<?php 
+
+session_start();
+
+if(!isset($_SESSION['user_id'])){
+    header("Location: index.php");
+    exit();
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,8 +34,8 @@
                 <a href="profile.html"><i class="fa-solid fa-user"></i> Profile</a>
             </div>
     
-            <form action="./php/logout.php" method="post">
-                <input type="button" value="Log Out">
+            <form action="./php/logout.php" method="POST">
+                <i class="fa-solid fa-right-from-bracket" style="margin-right: 1rem;"></i><input type="submit" value="Log Out">
             </form>
     
         </div>
@@ -33,7 +44,7 @@
             
             <div class="user-info">
 
-                <div class="user-image" style="background-image: url(./uploads/Luka1678995077/LukaCV.jpg)">
+                <div class="user-image">
                 </div>
 
                 <div>

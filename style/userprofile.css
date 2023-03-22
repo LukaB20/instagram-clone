@@ -19,6 +19,7 @@
 .user-profile{
     background-color: white;
     height: 400px;
+    width: 50%;
     margin-top: 1rem;
     padding: 2rem;
     border-radius: 5px;
@@ -29,22 +30,40 @@
 .user-info{
     display: flex;
     gap: 2rem;
+    justify-content: center;
+    border-bottom: 1px solid rgb(230, 230, 230);
+    padding-bottom: 2rem;
 }
 
 .user-image{
     width: 150px;
     height: 150px;
     border-radius: 50%;
+    background-image: url(../uploads/Marko1678997556/46.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
 }
 
 .user-data{
     display: flex;
     gap: 1rem;
+    align-items: center;
     margin-top: 1rem;
+}
+
+.user-data .name{
+    font-size: 1.5rem;
+    font-weight: 600;
 }
 
 .user-data a{
     text-decoration: none;
+    color: var(--dark);
+    background-color: var(--light-body);
+    padding: 0.5rem;
+    border-radius: 5px;
+    font-weight: 600;
 }
 
 .user-stats{
