@@ -1,7 +1,7 @@
 <?php
     
         $emailError = $confirmedPasswordError = $imageError = "";
-        $allowedExtensions = array("png", "img", "png", "jpg", "jpeg");
+        $allowedExtensions = array("png", "img", "jpg", "jpeg");
         $success = "";
 
         if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -25,10 +25,17 @@
     
                 @require("./models/User.php");
 
+                // Show message that user is successfully created
                 $success = "block";
+                // Create folder for registered user
                 $userDirName = $_POST["firstName"] . time();
                 mkdir("uploads/$userDirName");
-                $targetFile = "uploads/" . $userDirName . "/" . $_FILES['image']['name'];
+                mkdir("uploads/$userDirName/profile_image");
+                // Create folder for posts
+                mkdir("uploads/$userDirName/posts");
+
+                // Uploading user profile image
+                $targetFile = "uploads/" . $userDirName . "/profile_image" . "/" . $_FILES['image']['name'];
                 if(!move_uploaded_file($_FILES['image']["tmp_name"], $targetFile)){
                     $imageError = "Image not uploaded.";
                     exit();
@@ -36,9 +43,9 @@
 
                 $fileName = $_FILES['image']['name'];
 
-                $imagePath = "uploads/$userDirName/" . $fileName;
+                $imagePath = "uploads/$userDirName/profile_image/" . $fileName;
 
-                User::insertUser($_POST['firstName'], $_POST['lastName'], $_POST['email'], $_POST['password'], "Offline", $imagePath);
+                User::insertUser($_POST['firstName'], $_POST['lastName'], $_POST['email'], $_POST['password'], "Offline", $imagePath, $userDirName);
             }
         }
     
@@ -91,7 +98,7 @@
             </div>
             <input type="submit" value="Sign Up">
         </form>
-        <p>Already have an account? <a href="#">Login here</a></p>
+        <p>Already have an account? <a href="index.php">Login here</a></p>
     </div>
     
     <script src="./ajax/register_ajax.js"></script>

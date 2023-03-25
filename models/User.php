@@ -5,12 +5,12 @@
  */
 class User{
 
-    public static function insertUser($firstname, $lastname, $email, $password, $status, $image){
+    public static function insertUser($firstname, $lastname, $email, $password, $status, $image, $folder){
 
         @require("php/database.php");
 
-        $statement = $conn->prepare("INSERT INTO user (firstname, lastname, email, password, status, image)
-                                    VALUES (:firstname, :lastname, :email, :password, :status, :image)");
+        $statement = $conn->prepare("INSERT INTO user (firstname, lastname, email, password, status, image, folder)
+                                    VALUES (:firstname, :lastname, :email, :password, :status, :image, :folder)");
 
         $statement->bindParam(":firstname", $firstname);
         $statement->bindParam(":lastname", $lastname);
@@ -18,6 +18,7 @@ class User{
         $statement->bindParam(":password", $password);
         $statement->bindParam(":status", $status);
         $statement->bindParam(":image", $image);
+        $statement->bindParam(":folder", $folder);
 
         try{
             $statement->execute();
@@ -64,6 +65,24 @@ class User{
             echo "Error: " . $e->getMessage();
         }
 
+    }
+
+    public static function getUserFolderName($userID){
+
+        @require("database.php");
+
+        $statement = $conn->prepare("SELECT * FROM user WHERE user_id = '$userID'");
+
+        try{
+            $statement->execute();
+            $result = $statement->fetch(PDO::FETCH_ASSOC);
+            if($result != null){
+                return $result['folder'];
+            }
+        }catch(PDOException $e){
+            echo "Error: " . $e->getMessage();
+        }
+        
     }
 
 }

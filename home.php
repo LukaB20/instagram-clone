@@ -17,7 +17,7 @@
         <div class="link-group">
             <a href="home.html"><i class="fa-solid fa-house"></i> Home</a>
             <a href="home.html"><i class="fa-solid fa-message"></i> Messages</a>
-            <a href="home.html"><i class="fa-solid fa-square-plus"></i> Add new post</a>
+            <a href="addPost.php"><i class="fa-solid fa-square-plus"></i> Add new post</a>
             <a href="profile.php"><i class="fa-solid fa-user"></i> Profile</a>
         </div>
 
