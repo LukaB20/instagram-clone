@@ -27,6 +27,26 @@ class Post{
 
     }
 
+    public static function getUserPosts($userID){
+        $posts = array();
+
+        @require("./php/database.php");
+
+        $statement = $conn->prepare("SELECT * FROM post WHERE userPosted_id = '$userID'");
+
+        try{
+            $statement->execute();
+            $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+            foreach($result as $post){
+                array_push($posts, $post);
+            }
+            return $posts;
+        }catch(PDOException $e){
+            echo "Error: " . $e->getMessage();
+            exit();
+        }
+    }
+
 }
 
 ?>

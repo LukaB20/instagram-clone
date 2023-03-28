@@ -69,7 +69,7 @@ class User{
 
     public static function getUserFolderName($userID){
 
-        @require("database.php");
+        @require("./php/database.php");
 
         $statement = $conn->prepare("SELECT * FROM user WHERE user_id = '$userID'");
 
