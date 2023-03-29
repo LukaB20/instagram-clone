@@ -92,3 +92,18 @@
     background-repeat: no-repeat;
     background-size: contain;
 }
+
+#follow-user{
+    background-color: white;
+    padding: 0.5rem;
+    border-radius: 5px;
+    color: var(--dark);
+    border: 1px solid var(--dark);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#follow-user:hover{
+    background-color: var(--dark);
+    color: white;
+}

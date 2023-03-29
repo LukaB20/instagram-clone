@@ -26,7 +26,7 @@
             </div>
     
             <form action="./php/logout.php" method="post">
-                <i class="fa-solid fa-right-from-bracket" style="margin-right: 1rem;"></i><input type="button" value="Log Out">
+                <i class="fa-solid fa-right-from-bracket" style="margin-right: 1rem;"></i><input type="submit" value="Log Out">
             </form>
     
         </div>

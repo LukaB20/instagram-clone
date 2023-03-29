@@ -9,6 +9,7 @@ if(!isset($_SESSION['user_id'])){
 
 @include("./models/User.php");
 @include("./models/Post.php");
+@include("./models/Following.php");
 
 $user = User::findUser($_GET['id']);
 $userPosts = Post::getUserPosts($_GET['id']);
@@ -62,7 +63,11 @@ $userPostsCount = count($userPosts);
                         <?php if($_SESSION['user_id'] == $_GET['id']){ ?>
                             <a href="edit.html">Edit profile</a>
                         <?php }else{?>
-                            <a href="">Follow</a>
+                            <?php if(Following::isFollowing($_GET['id'])){ ?>
+                                <button id="unfollow-user" onclick="unfollowUser(<?php echo $_GET['id'] ?>)">Unfollow</button>
+                            <?php }else{?>
+                                <button id="follow-user" onclick="followUser(<?php echo $_GET['id'] ?>)">Follow</button>
+                            <?php }?>
                         <?php } ?>
                         
                     </div>
@@ -86,6 +91,9 @@ $userPostsCount = count($userPosts);
 
         </div>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <script src="./ajax/profile.js"></script>
 
 </body>
 </html>

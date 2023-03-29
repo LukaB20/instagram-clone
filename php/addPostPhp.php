@@ -26,7 +26,7 @@ if(Post::createPost($imageName, $_POST['description'])){
         header("Location: ../addPost.php?error='Failed to upload a file to folder'");
         exit();
     }else{
-        header("Location: ../profile.php");
+        header("Location: ../profile.php?id=$userId");
     }
 
 }else{

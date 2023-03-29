@@ -16,7 +16,6 @@ $(document).ready(() => {
                                 <div class="user-image" style="background-image: url(${data[i].image});"></div>
                                     <a href="profile.php?id=${data[i].user_id}" class="user-name">${data[i].firstname + " " + data[i].lastname}</a>
                                 </div>
-                            <button class="follow" onclick="followFriend(this ,${data[i].user_id})">Follow</button>
                         </div>
                     `);
                 }
@@ -28,19 +27,3 @@ $(document).ready(() => {
     });
     
 });
-
-const followFriend = (e, id) => {
-    $.ajax({
-        url: "php/followUser.php",
-        type: "GET",
-        data: {friendId: id},
-        success: (response) => {
-            if(response){
-                e.target.value = '<i class="fa-solid fa-check"></i> Following';
-            }
-        },
-        error: () => {
-            console.log("Failed to follow user.");
-        }
-    })
-}

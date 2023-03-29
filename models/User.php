@@ -69,7 +69,14 @@ class User{
 
     public static function getUserFolderName($userID){
 
-        @require("./php/database.php");
+        $conn = null;
+
+        try{
+            $conn = new PDO("mysql:host=localhost;dbname=instagram", "root", "");
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        }catch(PDOException $e){
+            echo "Connection failed: " . $e->getMessage();
+        }
 
         $statement = $conn->prepare("SELECT * FROM user WHERE user_id = '$userID'");
 
