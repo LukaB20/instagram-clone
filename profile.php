@@ -64,7 +64,7 @@ $numberOfFollowing = count(Following::getNumberOfFollowing($_GET['id']));
                     <div class="user-data">
                         <p class="name"><?php echo $user['firstname'] . " " . $user['lastname'] ?></p>
                         <?php if($_SESSION['user_id'] == $_GET['id']){ ?>
-                            <a href="edit.html">Change profile image</a>
+                            <a href="changeImage.php">Change profile image</a>
                         <?php }else{?>
                             <?php if(Following::isFollowing($_GET['id'])){ ?>
                                 <button id="unfollow-user" style="display:block" onclick="unfollowUser(<?php echo $_GET['id'] ?>)">Unfollow</button>

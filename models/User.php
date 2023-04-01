@@ -92,4 +92,23 @@ class User{
         
     }
 
+    public static function changeUserProfileImage($imageName){
+        $conn = null;
+        $currentUser = $_SESSION['user_id'];
+        try{
+            $conn = new PDO("mysql:host=localhost;dbname=instagram", "root", "");
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        }catch(PDOException $e){
+            echo "Connection failed: " . $e->getMessage();
+        }
+
+        $statement = $conn->prepare("UPDATE user SET image = '$imageName' WHERE user_id = '$currentUser'");
+
+        try{
+            $statement->execute();
+        }catch(PDOException $e){
+            echo "Error: " . $e->getMessage();
+        }
+    }
+
 }
