@@ -57,6 +57,26 @@ class Following{
         }
     }
 
+    public static function getFollowers(){
+
+        @require("./php/database.php");
+
+        $currentUser = $_SESSION['user_id'];
+
+        $statement = $conn->prepare("SELECT * FROM user WHERE user_id in (
+            SELECT friend_id FROM following WHERE user_id = '$currentUser'
+        )");
+
+        try{
+            $statement->execute();
+            $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+        }catch(PDOException $e){
+            echo "Error: " . $e->getMessage();
+            return array();
+        }
+    }
+
 }
 
 ?>
