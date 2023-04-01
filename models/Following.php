@@ -27,6 +27,36 @@ class Following{
 
     }
 
+    public static function getNumberOfFollowers($userId){
+        @require("./php/database.php");
+
+        $statement = $conn->prepare("SELECT * FROM following WHERE friend_id = '$userId'");
+
+        try{
+            $statement->execute();
+            $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+        }catch(PDOException $e){
+            echo "Error: " . $e->getMessage();
+            exit();
+        }
+    }
+
+    public static function getNumberOfFollowing($userId){
+        @require("./php/database.php");
+
+        $statement = $conn->prepare("SELECT * FROM following WHERE user_id = '$userId'");
+
+        try{
+            $statement->execute();
+            $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+            return $result;
+        }catch(PDOException $e){
+            echo "Error: " . $e->getMessage();
+            exit();
+        }
+    }
+
 }
 
 ?>

@@ -16,6 +16,9 @@ $userPosts = Post::getUserPosts($_GET['id']);
 $userFolderName = "./uploads" . "/" . User::getUserFolderName($_GET['id']) . "/" . "posts/";
 $userPostsCount = count($userPosts);
 
+$numberOfFollowers = count(Following::getNumberOfFollowers($_GET['id']));
+$numberOfFollowing = count(Following::getNumberOfFollowing($_GET['id']));
+
 ?>
 
 <!DOCTYPE html>
@@ -61,12 +64,14 @@ $userPostsCount = count($userPosts);
                     <div class="user-data">
                         <p class="name"><?php echo $user['firstname'] . " " . $user['lastname'] ?></p>
                         <?php if($_SESSION['user_id'] == $_GET['id']){ ?>
-                            <a href="edit.html">Edit profile</a>
+                            <a href="edit.html">Change profile image</a>
                         <?php }else{?>
                             <?php if(Following::isFollowing($_GET['id'])){ ?>
-                                <button id="unfollow-user" onclick="unfollowUser(<?php echo $_GET['id'] ?>)">Unfollow</button>
+                                <button id="unfollow-user" style="display:block" onclick="unfollowUser(<?php echo $_GET['id'] ?>)">Unfollow</button>
+                                <button id="follow-user" style="display:none" onclick="followUser(<?php echo $_GET['id'] ?>)">Follow</button>
                             <?php }else{?>
-                                <button id="follow-user" onclick="followUser(<?php echo $_GET['id'] ?>)">Follow</button>
+                                <button id="follow-user" style="display:block" onclick="followUser(<?php echo $_GET['id'] ?>)">Follow</button>
+                                <button id="unfollow-user" style="display:none" onclick="unfollowUser(<?php echo $_GET['id'] ?>)">Unfollow</button>
                             <?php }?>
                         <?php } ?>
                         
@@ -74,8 +79,8 @@ $userPostsCount = count($userPosts);
     
                     <div class="user-stats">
                         <p><span><?php echo $userPostsCount; ?></span> posts</p>
-                        <p><span>337</span> followers</p>
-                        <p><span>237</span> following</p>
+                        <p><span><?php echo $numberOfFollowers; ?></span> followers</p>
+                        <p><span><?php echo $numberOfFollowing ?></span> following</p>
                     </div>
                 </div>
 

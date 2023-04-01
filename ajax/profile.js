@@ -12,8 +12,11 @@ const followUser = (id) => {
         }
     });
 
-    
-
+    const unFollowUserBtn = document.querySelector("#unfollow-user");
+    const followUserBtn = document.querySelector("#follow-user");
+    console.log(unFollowUserBtn)
+    unFollowUserBtn.style.display = "block";
+    followUserBtn.style.display = "none";
 }
 
 const unfollowUser = (id) => {
@@ -29,6 +32,11 @@ const unfollowUser = (id) => {
             console.log('ERROR');
         }
     });
+
+    const unFollowUserBtn = document.querySelector("#unfollow-user");
+    const followUserBtn = document.querySelector("#follow-user");
+    unFollowUserBtn.style.display = "none";
+    followUserBtn.style.display = "block";
 
 }
 

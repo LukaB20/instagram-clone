@@ -90,7 +90,7 @@
     height: 400px;
     background-position: center;
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
 }
 
 #follow-user{
@@ -104,6 +104,21 @@
 }
 
 #follow-user:hover{
+    background-color: var(--dark);
+    color: white;
+}
+
+#unfollow-user{
+    background-color: white;
+    padding: 0.5rem;
+    border-radius: 5px;
+    color: var(--dark);
+    border: 1px solid var(--dark);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#unfollow-user:hover{
     background-color: var(--dark);
     color: white;
 }
