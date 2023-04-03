@@ -1,3 +1,12 @@
+<?php 
+
+session_start();
+
+if(!isset($_SESSION['user_id'])){
+    header("Location: index.php");
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,7 +31,7 @@
                 <a href="home.html"><i class="fa-solid fa-message"></i> Messages</a>
                 <a href="addPost.php"><i class="fa-solid fa-square-plus"></i> Add new post</a>
                 <a href="search.php"><i class="fa-solid fa-magnifying-glass fa-rotate-90"></i> Search</a>
-                <a href="profile.php?id=<?php echo $_SESSION['user_id'] ?>"><i class="fa-solid fa-user"></i> Profile</a>
+                <a href="profile.php?id=<?php echo $_SESSION['user_id']; ?>"><i class="fa-solid fa-user"></i> Profile</a>
             </div>
     
             <form action="./php/logout.php" method="post">

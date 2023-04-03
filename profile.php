@@ -79,8 +79,8 @@ $numberOfFollowing = count(Following::getNumberOfFollowing($_GET['id']));
     
                     <div class="user-stats">
                         <p><span><?php echo $userPostsCount; ?></span> posts</p>
-                        <p><span><?php echo $numberOfFollowers; ?></span> followers</p>
-                        <p><span><?php echo $numberOfFollowing ?></span> following</p>
+                        <p><a href="followers.php"><span><?php echo $numberOfFollowers; ?></span> followers</a></p>
+                        <p><a href="following.php"><span><?php echo $numberOfFollowing ?></span> following</a></p>
                     </div>
                 </div>
 

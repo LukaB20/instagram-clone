@@ -72,6 +72,11 @@
     gap: 2rem;
 }
 
+.user-stats a{
+    text-decoration: none;
+    color: var(--dark);
+}
+
 .user-stats span{
     font-weight: bold;
 }

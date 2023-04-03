@@ -18,12 +18,12 @@ const followUser = (id) => {
     followUserBtn.style.display = "none";
 }
 
-const unfollowUser = (id) => {
+function unFollowUser(id) {
 
     $.ajax({
         url: "php/unfollowUser.php",
         type: "GET",
-        data: {friendId: id},
+        data: { friendId: id },
         success: (response) => {
             console.log(response);
         },

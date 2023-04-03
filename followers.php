@@ -52,19 +52,18 @@ $followers = Following::getFollowers();
             <div class="central-div">
                 <h1>People following you</h1>
                 <div class="friends">
-                    <?php var_dump($followers) ?>
                     <?php foreach($followers as $follower){ ?>
                     <div class="friend">
                         <div class="user-info">
                             <div class="user-image" style="background-image: url(<?php echo $follower['image']; ?>);"></div>
-                                <a href="" class="user-name"><?php echo $follower['firstname'] . " " . $follower['lastname']; ?></a>
+                                <a href="profile.php?id=<?php echo $follower['user_id']; ?>" class="user-name"><?php echo $follower['firstname'] . " " . $follower['lastname']; ?></a>
                             </div>
                             <?php if(Following::isFollowing($follower['user_id'])) { ?>
-                                <button class="unfollow" onclick="unFollowUser(<?php echo $follower['user_id'] ?>)" style="display: block;">Unfollow</button>
-                                <button class="follow" onclick="followUser(<?php echo $follower['user_id'] ?>)" style="display: none;">Follow</button>
+                                <button class="unfollow" onclick="unFollowUser(<?php echo $follower['user_id']; ?>)" style="display: block;">Unfollow</button>
+                                <button class="follow" onclick="followUser(<?php echo $follower['user_id']; ?>)" style="display: none;">Follow</button>
                             <?php }else{ ?>
-                                <button class="unfollow" onclick="unFollowUser(<?php echo $follower['user_id'] ?>)" style="display: none;">Unfollow</button>
-                                <button class="follow" onclick="followUser(<?php echo $follower['user_id'] ?>)" style="display: block;">Follow</button>
+                                <button class="unfollow" onclick="unFollowUser(<?php echo $follower['user_id']; ?>)" style="display: none;">Unfollow</button>
+                                <button class="follow" onclick="followUser(<?php echo $follower['user_id']; ?>)" style="display: block;">Follow</button>
                             <?php } ?>
                     </div>
                     <?php } ?>
