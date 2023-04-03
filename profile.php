@@ -90,8 +90,13 @@ $numberOfFollowing = count(Following::getNumberOfFollowing($_GET['id']));
                 <?php foreach($userPosts as $post){ 
                     $userPostPath = $userFolderName . $post['imageUrl'];    
                 ?>
-                    <div class='post' style="background-image: url(<?php echo $userPostPath; ?>);"></div>
-                <?php } ?>
+                    <div class='post' style="background-image: url(<?php echo $userPostPath; ?>);">
+                        <div class="inner-post">
+                            <p>0 <i class="fa-solid fa-heart"></i> 0 <i class="fa-solid fa-comment"></i></p>
+                            <a href="post.html">View post</a>
+                        </div>
+                    </div>
+                <?php } ?> 
             </div>
 
         </div>

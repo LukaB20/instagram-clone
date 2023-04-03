@@ -40,3 +40,21 @@ const unfollowUser = (id) => {
 
 }
 
+const posts = document.querySelectorAll(".inner-post");
+
+posts.forEach((post) => {
+    post.addEventListener("mouseover", () => {
+        post.childNodes.forEach((child) => {
+            if (child.nodeType === Node.ELEMENT_NODE) {
+                child.style.display = "block";
+            }
+        });
+    });
+    post.addEventListener("mouseleave", () => {
+        post.childNodes.forEach((child) => {
+            if (child.nodeType === Node.ELEMENT_NODE) {
+                child.style.display = "none";
+            }
+        });
+    });
+});

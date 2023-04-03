@@ -127,3 +127,31 @@
     background-color: var(--dark);
     color: white;
 }
+
+.post .inner-post{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.post .inner-post:hover{
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.post .inner-post a{
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 600;
+    display: none;
+}
+
+.post .inner-post p{
+    color: white;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    display: none;
+}
