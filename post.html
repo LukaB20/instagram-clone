@@ -45,22 +45,28 @@ if(!isset($_SESSION['user_id'])){
                 <div class="image col-xxl-6 col-xl-12">
                 </div>
                 <div class="image-statistics col-xxl-6 col-xl-12">
-                    <div class="post-data">
-                        <div class="user-description">
-                            <div class="user">
-                                <div class="user-image"></div>
-                                <p>Luka Banovic</p>
-                            </div>
-                            <p>Ovo je opis slike</p>
+                    <div class="post-info">
+                        <div class="user">
+                            <div class="user-image"></div>
+                            <p class="user-name">Luka Banovic</p>
                         </div>
-                            <div class="cta">
-                                <button class="like-btn"><i class="fa-regular fa-heart"></i></button>
+                        <p class="post-description">
+                            Ovo je opis ove objave
+                        </p>
+                        <button class="like-btn"><i class="fa-regular fa-heart"></i></button>
+                        <div class="comments">
+                            <div class="comment">
+                                <div class="user-comment-image"></div>
+                                <div class="name-comment">
+                                    <a href="#" class="comment-name">Marko Markovic</a>
+                                    <p class="comment-text">Zaista lepa slika</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="post-comment">
-                        <input type="text" name="postText" id="postText">
-                        <button class="post-comment-btn">Post</button>
+                        <input type="text" name="commentText" id="commentText">
+                        <input type="button" value="Post" id="postComment">
                     </div>
             </div>
         </div>

@@ -36,7 +36,10 @@
 }
 
 .image-statistics{
-    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1rem;
 }
 
 .user{
@@ -46,25 +49,93 @@
 }
 
 .user-image{
-    width: 50px;
-    height: 50px;
-    background-image: url(../uploads/Luka1680110300/profile_image/LukaCV.jpg);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    background-image: url(../uploads/Luka1680110300/posts/46.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.user-name{
+    font-weight: 600;
+}
+
+.post-description{
+    margin-top: 1rem;
+}
+
+.post-info{
+    position: relative;
+}
+
+.like-btn{
+    background-color: white;
+    border: none;
+    font-size: 1.6rem;
+}
+
+.comments{
+    position: absolute;
+    width: 100%;
+    height: 670px;
+    overflow-y: auto;
+    padding-top: 1rem;
+}
+
+.post-comment{
+    margin-top: 0.5rem;
+}
+
+.post-comment input[type="text"]{
+    width: 90%;
+    padding: 0.2rem;
+    border: 1px solid rgb(169, 169, 169);
+    border-radius: 5px;
+}
+
+.post-comment input[type="button"]{
+    width: 60px;
+    padding: 0.2rem;
+    border: 1px solid var(--dark);
+    background-color: white;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.post-comment input[type="button"]:hover{
+    color: white;
+    background-color: var(--dark);
+}
+
+.comment{
+    display: flex;
+    gap: 1rem;
+}
+
+.comment a{
+    text-decoration: none;
+    color: var(--dark);
+    font-weight: 600;
+}
+
+.comment a:hover{
+    color: var(--dark);
+}
+
+.user-comment-image{
+    background-image: url(../uploads/Luka1680110300/posts/31.jpg);
+    width: 40px;
+    height: 40px;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     border-radius: 50%;
 }
 
-.user p{
-    font-weight: 600;
-}
-
-.user-description p{
-    margin-top: 1rem;
-}
-
-.like-btn{
-    background-color: white;
-    border: none;
-    font-size: 1.5rem;
+@media only screen and (max-width: 1400px) {
+    .comments{
+        height: 330px;
+    }
 }
