@@ -12,6 +12,10 @@
     --dark: rgb(45, 45, 45);
 }
 
+.wrapper{
+    display: flex;
+}
+
 .post-container{
     width: 80%;
     height: 100vh;

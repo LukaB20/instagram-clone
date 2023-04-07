@@ -21,7 +21,7 @@ if(!isset($_SESSION['user_id'])){
 </head>
 <body>
 
-    <div class="container-fluid d-flex">
+    <div class="wrapper">
         <div class="side-bar">
 
             <h2><a href="home.php">Instagram</a></h2>
@@ -65,13 +65,16 @@ if(!isset($_SESSION['user_id'])){
                         </div>
                     </div>
                     <div class="post-comment">
+                        <input type="text" name="postId" id="postId" value="<?php echo $_GET['id']; ?>" hidden>
                         <input type="text" name="commentText" id="commentText">
-                        <input type="button" value="Post" id="postComment">
+                        <input type="button" onclick="createPost()" value="Post" id="postComment">
                     </div>
             </div>
         </div>
         
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+    <script src="./ajax/comment.js"></script>
 </body>
 </html>

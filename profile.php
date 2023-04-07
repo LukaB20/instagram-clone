@@ -93,7 +93,7 @@ $numberOfFollowing = count(Following::getNumberOfFollowing($_GET['id']));
                     <div class='post' style="background-image: url(<?php echo $userPostPath; ?>);">
                         <div class="inner-post">
                             <p>0 <i class="fa-solid fa-heart"></i> 0 <i class="fa-solid fa-comment"></i></p>
-                            <a href="post.html">View post</a>
+                            <a href="post.php?id=<?php echo $post['post_id'] ?>">View post</a>
                         </div>
                     </div>
                 <?php } ?> 
