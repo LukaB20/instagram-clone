@@ -25,3 +25,35 @@ const createPost = () => {
         }
     });
 }
+
+const likePost = (id) =>{
+    $.ajax({
+        url: "php/likePost.php",
+        type: "GET",
+        data: {postId: id},
+        success: (response) => {
+            if(response == "success"){
+                document.querySelector(".like-btn").innerHTML = '<i class="fa-solid fa-heart"></i>'
+            }
+        },
+        error: (xhr) => {
+            console.log(xhr);
+        }
+    });
+}
+
+const unlikePost = (id) => {
+    $.ajax({
+        url: "php/unlikePost.php",
+        type: "GET",
+        data: {postId: id},
+        success: (response) => {
+            if(response == "success"){
+                document.querySelector(".like-btn").innerHTML = '<i class="fa-solid fa-heart"></i>'
+            }
+        },
+        error: (xhr) => {
+            console.log(xhr);
+        }
+    });
+}

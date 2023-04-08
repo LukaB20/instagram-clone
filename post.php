@@ -6,6 +6,12 @@ if(!isset($_SESSION['user_id'])){
     header("Location: index.php");
 }
 
+@require("models/Comment.php");
+@require("models/User.php");
+@require("models/Like.php");
+
+$comments = Comment::getComments($_GET['id']);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -53,15 +59,21 @@ if(!isset($_SESSION['user_id'])){
                         <p class="post-description">
                             Ovo je opis ove objave
                         </p>
-                        <button class="like-btn"><i class="fa-regular fa-heart"></i></button>
+                        <?php if(Like::isLiked($_GET['id'])) { ?>
+                            <button class="like-btn" onclick="likePost(<?php echo $_GET['id']; ?>)"><i class="fa-regular fa-heart"></i></button>
+                        <?php }else{ ?>
+                            <button class="like-btn" onclick="likePost(<?php echo $_GET['id']; ?>)"><i class="fa-regular fa-heart"></i></button>
+                        <?php } ?>
                         <div class="comments">
-                            <div class="comment">
-                                <div class="user-comment-image"></div>
-                                <div class="name-comment">
-                                    <a href="#" class="comment-name">Marko Markovic</a>
-                                    <p class="comment-text">Zaista lepa slika</p>
+                            <?php foreach($comments as $comment) { ?>
+                                <div class="comment">
+                                <div class="user-comment-image" style="background-image: url(<?php echo User::getUserProfileImage($comment['user_id']); ?>)"></div>
+                                    <div class="name-comment">
+                                        <a href="#" class="comment-name"><?php echo User::getUserFullName($comment['user_id']); ?></a>
+                                        <p class="comment-text"><?php echo $comment['comment_text']; ?></p>
+                                    </div>
                                 </div>
-                            </div>
+                            <?php } ?>
                         </div>
                     </div>
                     <div class="post-comment">
@@ -75,6 +87,6 @@ if(!isset($_SESSION['user_id'])){
     </div>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
-    <script src="./ajax/comment.js"></script>
+    <script src="./ajax/post.js"></script>
 </body>
 </html>

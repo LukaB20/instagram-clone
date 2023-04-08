@@ -24,6 +24,23 @@ class Comment{
 
     }
 
+    public static function getComments($post_id){
+
+        @require("./php/database.php");
+
+        $statement = $conn->prepare("SELECT * FROM comment WHERE post_id = $post_id");
+
+        try{
+            $statement->execute();
+            $comments = $statement->fetchAll(PDO::FETCH_ASSOC);
+            return $comments;
+        }catch(PDOException $e){
+            echo "Error: " . $e->getMessage();
+            return;
+        }
+
+    }
+
 }
 
 

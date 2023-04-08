@@ -56,7 +56,6 @@
     border-radius: 50%;
     width: 60px;
     height: 60px;
-    background-image: url(../uploads/Luka1680110300/posts/46.jpg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -136,6 +135,10 @@
     background-repeat: no-repeat;
     background-size: cover;
     border-radius: 50%;
+}
+
+.fa-solid{
+    color: red;
 }
 
 @media only screen and (max-width: 1400px) {

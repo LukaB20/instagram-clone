@@ -92,6 +92,56 @@ class User{
         
     }
 
+    public static function getUserProfileImage($userID){
+
+        $conn = null;
+
+        try{
+            $conn = new PDO("mysql:host=localhost;dbname=instagram", "root", "");
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        }catch(PDOException $e){
+            echo "Connection failed: " . $e->getMessage();
+        }
+
+        $statement = $conn->prepare("SELECT * FROM user WHERE user_id = '$userID'");
+
+        try{
+            $statement->execute();
+            $result = $statement->fetch(PDO::FETCH_ASSOC);
+            if($result != null){
+                return $result['image'];
+            }
+        }catch(PDOException $e){
+            echo "Error: " . $e->getMessage();
+        }
+        
+    }
+    
+    public static function getUserFullName($userID){
+
+        $conn = null;
+
+        try{
+            $conn = new PDO("mysql:host=localhost;dbname=instagram", "root", "");
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        }catch(PDOException $e){
+            echo "Connection failed: " . $e->getMessage();
+        }
+
+        $statement = $conn->prepare("SELECT * FROM user WHERE user_id = '$userID'");
+
+        try{
+            $statement->execute();
+            $result = $statement->fetch(PDO::FETCH_ASSOC);
+            if($result != null){
+                return $result['firstname'] . " " . $result['lastname'];
+            }
+        }catch(PDOException $e){
+            echo "Error: " . $e->getMessage();
+        }
+        
+    } 
+
     public static function changeUserProfileImage($imageName){
         $conn = null;
         $currentUser = $_SESSION['user_id'];
