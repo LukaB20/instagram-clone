@@ -41,6 +41,21 @@ class Comment{
 
     }
 
+    public static function getNumberOfComments($post_id){
+        @require("./php/database.php");
+
+        $statement = $conn->prepare("SELECT count(*) FROM comment WHERE post_id = $post_id");
+
+        try{
+            $statement->execute();
+            $result = $statement->fetchColumn();
+            return $result;
+        }catch(PDOException $e){
+            echo "Error: " . $e->getMessage();
+            return;
+        }
+    }
+
 }
 
 

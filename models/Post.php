@@ -47,6 +47,23 @@ class Post{
         }
     }
 
+    public static function getUsersId($post_id){
+        
+        @require("./php/database.php");
+
+        $statement = $conn->prepare("SELECT userPosted_id FROM post WHERE post_id = $post_id");
+
+        try{
+            $statement->execute();
+            $result = $statement->fetch();
+            return $result['userPosted_id'];
+        }catch(PDOException $e){
+            echo "Error: " . $e->getMessage();
+            return;
+        }
+
+    }
+
 }
 
 ?>

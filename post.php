@@ -9,6 +9,7 @@ if(!isset($_SESSION['user_id'])){
 @require("models/Comment.php");
 @require("models/User.php");
 @require("models/Like.php");
+@require("models/Post.php");
 
 $comments = Comment::getComments($_GET['id']);
 
@@ -53,17 +54,23 @@ $comments = Comment::getComments($_GET['id']);
                 <div class="image-statistics col-xxl-6 col-xl-12">
                     <div class="post-info">
                         <div class="user">
-                            <div class="user-image"></div>
+                            <div class="user-image" style="background-image: url(<?php echo User::getUserProfileImage(Post::getUsersId($_GET['id'])); ?>)"></div>
                             <p class="user-name">Luka Banovic</p>
                         </div>
                         <p class="post-description">
                             Ovo je opis ove objave
                         </p>
-                        <?php if(Like::isLiked($_GET['id'])) { ?>
-                            <button class="like-btn" onclick="likePost(<?php echo $_GET['id']; ?>)"><i class="fa-regular fa-heart"></i></button>
-                        <?php }else{ ?>
-                            <button class="like-btn" onclick="likePost(<?php echo $_GET['id']; ?>)"><i class="fa-regular fa-heart"></i></button>
-                        <?php } ?>
+                        <div class="post-info-flex">
+                            <?php if(Like::isLiked($_GET['id'])) { ?>
+                                <button class="like-btn" id="like-btn" style="display: none;" onclick="likePost(<?php echo $_GET['id']; ?>)"><i class="fa-regular fa-heart"></i></button>
+                                <button class="like-btn" id="dislike-btn" onclick="dislikePost(<?php echo $_GET['id']; ?>)"><i class="fa-solid fa-heart dislike-btn"></i></button>
+                            <?php }else{ ?>
+                                <button class="like-btn" id="like-btn" onclick="likePost(<?php echo $_GET['id']; ?>)"><i class="fa-regular fa-heart"></i></button>
+                                <button class="like-btn" id="dislike-btn" style="display: none;" onclick="dislikePost(<?php echo $_GET['id']; ?>)"><i class="fa-solid fa-heart dislike-btn"></i></button>
+                            <?php } ?>
+                            <p><span id="no-of-likes"><?php echo Like::getNumberOfLikes($_GET['id']); ?></span> likes</p>
+                            <p><span id="no-of-comments"><?php echo Comment::getNumberOfComments($_GET['id']); ?></span> comments</p>
+                        </div>
                         <div class="comments">
                             <?php foreach($comments as $comment) { ?>
                                 <div class="comment">

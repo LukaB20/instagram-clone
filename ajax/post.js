@@ -33,7 +33,8 @@ const likePost = (id) =>{
         data: {postId: id},
         success: (response) => {
             if(response == "success"){
-                document.querySelector(".like-btn").innerHTML = '<i class="fa-solid fa-heart"></i>'
+                document.querySelector("#like-btn").style.display = "none";
+                document.querySelector("#dislike-btn").style.display = "block";
             }
         },
         error: (xhr) => {
@@ -42,14 +43,15 @@ const likePost = (id) =>{
     });
 }
 
-const unlikePost = (id) => {
+const dislikePost = (id) => {
     $.ajax({
         url: "php/unlikePost.php",
         type: "GET",
         data: {postId: id},
         success: (response) => {
             if(response == "success"){
-                document.querySelector(".like-btn").innerHTML = '<i class="fa-solid fa-heart"></i>'
+                document.querySelector("#like-btn").style.display = "block";
+                document.querySelector("#dislike-btn").style.display = "none";
             }
         },
         error: (xhr) => {

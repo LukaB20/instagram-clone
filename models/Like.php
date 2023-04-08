@@ -31,7 +31,7 @@ class Like {
     }
 
     public static function isLiked($post_id){
-        @require("../php/database.php");
+        @require("php/database.php");
         $current_user = $_SESSION['user_id'];
         $statement = $conn->prepare("SELECT * FROM liked WHERE user_id = $current_user and post_id = $post_id");
 
@@ -47,6 +47,23 @@ class Like {
             echo "Error: " . $e->getMessage();
             return false;
         }
+    }
+
+    public static function getNumberOfLikes($post_id){
+
+        @require("php/database.php");
+        
+        $statement = $conn->prepare("SELECT count(post_id) FROM liked WHERE post_id = $post_id");
+
+        try{
+            $statement->execute();
+            $result = $statement->fetchColumn();
+            return $result;
+        }catch(PDOException $e){
+            echo "Error: " . $e->getMessage();
+            return;
+        }
+
     }
 
 }
