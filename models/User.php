@@ -51,7 +51,7 @@ class User{
 
     public static function findUser($userID){
 
-        @require("php/database.php");
+        @require("../php/database.php");
 
         $statement = $conn->prepare("SELECT * FROM user WHERE user_id = '$userID'");
 

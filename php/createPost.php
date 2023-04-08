@@ -3,9 +3,13 @@
 session_start();
 
 @require("../models/Comment.php");
+@require("../models/User.php");
 
-$queryResult = Comment::createComment($_SESSION['user_id'], $_POST["postId"], $_POST['commentText']);
+Comment::createComment($_SESSION['user_id'], $_POST["postId"], $_POST['commentText']);
 
-return json_encode($queryResult);
+$userData = User::findUser($_SESSION['user_id']);
+
+echo json_encode($userData);
+
 
 ?>
